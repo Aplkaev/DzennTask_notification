@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	file \
 	gettext \
 	git \
+    supervisor \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
@@ -50,6 +51,7 @@ RUN install-php-extensions pdo_pgsql
 COPY --link frankenphp/conf.d/10-app.ini $PHP_INI_DIR/app.conf.d/
 COPY --link --chmod=755 frankenphp/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 COPY --link frankenphp/Caddyfile /etc/frankenphp/Caddyfile
+COPY ./docker/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
 
 ENTRYPOINT ["docker-entrypoint"]
 
