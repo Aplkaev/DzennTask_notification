@@ -19,10 +19,11 @@ class NotificationMessageHandler
 
     public function __invoke(NotificationMessage $message): void
     {
+        echo $message;
         // сохраняем сообщение к себе
-        $messageList = $this->saveNotificationMessageUseCase->execute($message);
-
-        // делаем отправку по каналу
-        $this->sendNotificationMessageUseCase->execute($messageList);
+//        $messageList = $this->saveNotificationMessageUseCase->execute($message);
+//
+//        // делаем отправку по каналу
+//        $this->sendNotificationMessageUseCase->execute($messageList);
     }
 }

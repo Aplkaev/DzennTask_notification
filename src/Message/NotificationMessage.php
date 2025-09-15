@@ -12,4 +12,14 @@ class NotificationMessage
     )
     {
     }
+
+    public function __toString(): string
+    {
+        return json_encode([
+            'type' => $this->type,
+            'name' => $this->name,
+            'payload' => $this->payload,
+            'userId' => $this->userId
+        ]);
+    }
 }
